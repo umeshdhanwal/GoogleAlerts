@@ -8,7 +8,7 @@ runtime_config:
 
 handlers:
 - url: /.*
-  script: Galerts.app
+  script: Galerts.py
 
 libraries:
 - name: PIL
