@@ -6,6 +6,10 @@ runtime_config:
   # You can also specify 2 for Python 2.7
   python_version: 2.7
 
+handlers:
+- url: /.*
+  script: Galerts.app
+
 libraries:
 - name: PIL
   version: "1.1.7"
