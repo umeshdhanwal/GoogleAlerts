@@ -5,7 +5,7 @@ Created on Mon Sep 25 14:18:43 2017
 @author: 1537259
 """
 import sys
-sys.path.append("/usr/lib")
+sys.path.append("lib/galerts.py")
 
 import galerts
 
