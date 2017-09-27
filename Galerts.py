@@ -9,7 +9,7 @@ sys.path.append("lib/galerts.py")
 
 import galerts
 
-gam = galerts.GAlertsManager('umeshdhanwal@gmail.com', 'diamondcouch14')
+gam = galerts.GAlertsManager('umeshdhanwal', 'diamondcouch14')
 
 query = 'Cake Man Cornelius'
 type = galerts.TYPE_COMPREHENSIVE
