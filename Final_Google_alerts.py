@@ -9,7 +9,7 @@ d = feedparser.parse(URL_feed)
 
 #Write to  txt files and then use it for conversion 
 
-file = open("home/umeshlives/testfile.txt","w") 
+file = open("testfile.txt","w") 
 
 for e in d.entries:
      file.write(e.title)
