@@ -14,7 +14,7 @@ file = open("testfile.txt","w")
 for e in d.entries:
      file.write(e.title)
      file.write(e.link)
-     file.write(e.description)
+     file.write(str(e.description))
      file.write("\n") # 2 newlines
 
 file.close     
