@@ -22,7 +22,7 @@ file.close
 #Reading the Pdf already stored on local drive and
 #then reading it for writing
 print subprocess.check_output('git add testfile.txt', shell=True)
-print subprocess.check_output('git commit -m "'This is test file"'', shell=True)
+print subprocess.check_output('git commit -m "This"', shell=True)
 print subprocess.check_output('git push origin master', shell=True)
 #print subprocess.check_output('git init', shell=True)
 #print subprocess.check_output('git commit', shell=True) 
