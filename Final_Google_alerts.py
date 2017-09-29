@@ -1,6 +1,7 @@
 from git import Repo
 import feedparser
-import subprocess
+import git
+#import subprocess
 
 repo_dir = 'GoogleAlerts'
 URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/10484262279899711572'
@@ -21,8 +22,16 @@ file.close
 
 #Reading the Pdf already stored on local drive and
 #then reading it for writing
-print subprocess.check_output('git add .', shell=True)
-print subprocess.check_output('git commit -m "This"', shell=True)
-print subprocess.check_output('git push origin master', shell=True)
+repo = git.Repo(os.getcwd()
+files = repo.git.diff(None, name_only=True)
+for f in files.split('\n'):
+    show_diff(f)
+    repo.git.add(f)
+
+repo.git.commit('-m', 'test commit', author='umeshdhanwal@gmail.com')
+
+#print subprocess.check_output('git add .', shell=True)
+#print subprocess.check_output('git commit -m "This"', shell=True)
+#print subprocess.check_output('git push origin master', shell=True)
 #print subprocess.check_output('git init', shell=True)
 #print subprocess.check_output('git commit', shell=True) 
