@@ -1,6 +1,7 @@
 from git import Repo
 import feedparser
 import git
+import os
 #import subprocess
 
 repo_dir = 'GoogleAlerts'
