@@ -709,7 +709,7 @@ print(inputfields)
 
 response_post=s.post(url,data=post_args)
 
-gam = GAlertsManager('umeshdhanwal@gmail.com', 'diamondcouch14')
+gam = GAlertsManager('umeshdhanwal@gmail.com', '')
 
 query = 'Cake Man Cornelius'
 type = galerts.TYPE_COMPREHENSIVE
@@ -724,7 +724,7 @@ def test_login():
     password = '' # Gmail Password
     cookie_jar = cookielib.CookieJar() 
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar)) 
-    login_dict = urllib.urlencode({'umeshdhanwal' : username, 'diamodncouch14' :password}) 
+    login_dict = urllib.urlencode({'umeshdhanwal' : username, '' :password}) 
     opener.open('https://accounts.google.com/ServiceLogin', login_dict) 
     #response = opener.open('https://accounts.google.com/signin')
     #print response.read()
