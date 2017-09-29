@@ -21,6 +21,6 @@ file.close
 
 #Reading the Pdf already stored on local drive and
 #then reading it for writing
-#print subprocess.check_output('git init', shell=True)
+print subprocess.check_output('git init', shell=True)
 print subprocess.check_output('git add .', shell=True)
 print subprocess.check_output('git commit -m "As per latest date"', shell=True) 
