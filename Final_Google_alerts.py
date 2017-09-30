@@ -55,6 +55,7 @@ def upload_file(file_from, file_to):
                  dbx.files_upload(f.read(), file_to)
          
 print("The copiedName:",NameofFile)
+print(os.getcwd())
 
 file_from=NameofFile
 file_to='/'+NameofFile
