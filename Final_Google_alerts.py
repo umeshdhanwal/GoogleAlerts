@@ -49,6 +49,6 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 dbx = dropbox.Dropbox(app_secret)
 
 with open(NameofFile) as f:
-    dbx.files_upload(f.read(), '/'+NameofFile', mute=True)
+    dbx.files_upload(f.read(), '/'+NameofFile, mute=True)
 
 print(dbx.files_get_metadata('/story.txt').server_modified)
