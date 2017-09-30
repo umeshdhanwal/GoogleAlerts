@@ -61,5 +61,5 @@ file_from=NameofFile
 file_to='/'+NameofFile
 
 upload_file(file_from, file_to)
-print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
+print(dbx.files_get_metadata( '/GoogleAlerts/'+NameofFile).server_modified)
 
