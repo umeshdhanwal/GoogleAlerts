@@ -9,7 +9,7 @@ for dir, dirs, files in os.walk(rootdir):
     for file in files:
         try:
             file_path = os.path.join(dir, file)
-            dest_path = os.path.join('/test', file)
+            dest_path = os.path.join('/GoogleAlerts', file)
             print 'Uploading %s to %s' % (file_path, dest_path)
             with open(file_path,'r') as f:
                 dbx.files_upload(f.read(), dest_path, mute=True)
