@@ -48,7 +48,7 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(app_secret)
 
-filetocopy=open(NameofFile,'rb')
+filetocopy=open(NameofFile,'r')
 data = filetocopy.read()      # copy to a string
 filetocopy.close() 
 print data
