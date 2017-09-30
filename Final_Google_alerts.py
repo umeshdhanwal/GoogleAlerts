@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Sep 30 09:05:15 2017
+
+@author: Hsemu
+"""
+
+#from git import Repo
 import feedparser
 #import git
 import os
@@ -27,20 +35,10 @@ file.close
 app_key = 'ez341m6npdgliwh'
 app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
-flow = dropbox.client.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
+dbx = dropbox.Dropbox(app_secret)
 
-client = dropbox.client.DropboxClient(access_token)
-print 'linked account: ', client.account_info()
+dbx.users_get_current_account()
 
 f = open('testfile.txt', 'rb')
-response = client.put_file('/magnum-opus.txt', f)
+response = dbx.files_upload('/Trump_Alerts.txt', f)
 print "uploaded:", response
-
-#Reading the Pdf already stored on local drive and
-#then reading it for writing
-
-#print subprocess.check_output('git add .', shell=True)
-#print subprocess.check_output('git commit -m "This"', shell=True)
-#print subprocess.check_output('git push origin master', shell=True)
-#print subprocess.check_output('git init', shell=True)
-#print subprocess.check_output('git commit', shell=True) 
