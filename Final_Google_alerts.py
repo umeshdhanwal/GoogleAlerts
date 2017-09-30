@@ -38,7 +38,9 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 dbx = dropbox.Dropbox(app_secret)
 
 dbx.users_get_current_account()
+for entry in dbx.files_list_folder('').entries:
+    print(entry.name)
 
 f = open('testfile.txt', 'rb')
-response = dbx.files_upload('/Trump_Alerts.txt', f)
+response = dbx.files_upload(f, '/'+f)
 print "uploaded:", response
