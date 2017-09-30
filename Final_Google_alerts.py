@@ -48,7 +48,7 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(app_secret)
 
-filetocopy=open('/home/umeshlives/GoogleAlerts/'+NameofFile,'rb')
+filetocopy=open(NameofFile,'rb')
 data = filetocopy.read()      # copy to a string
 filetocopy.close() 
 
