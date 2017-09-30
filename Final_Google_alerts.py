@@ -58,7 +58,7 @@ print("The copiedName:",NameofFile)
 print(os.getcwd())
 
 file_from=NameofFile
-file_to='/'+NameofFile
+file_to=NameofFile
 
 upload_file(file_from, file_to)
 print(dbx.files_get_metadata( '/GoogleAlerts/'+NameofFile).server_modified)
