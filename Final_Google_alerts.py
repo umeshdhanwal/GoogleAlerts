@@ -18,8 +18,11 @@ now = datetime.datetime.now()
 now=now.strftime("%Y-%m-%d:%H:%M")
 
 ##Pull the latest file from git
-print subprocess.check_output('git stash', shell=True)
-print subprocess.check_output('git pull origin master', shell=True)
+subprocess.Popen('git stash')
+subprocess.Popen('git pull origin master')
+
+#print subprocess.check_output('git stash', shell=True)
+#print subprocess.check_output('git pull origin master', shell=True)
 
 repo_dir = 'GoogleAlerts'
 URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/10484262279899711572'
