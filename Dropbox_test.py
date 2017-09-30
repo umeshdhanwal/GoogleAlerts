@@ -1,6 +1,6 @@
 import dropbox, sys, os
 
-dbx = dropbox.Dropbox('token')
+dbx = dropbox.Dropbox('aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4')
 rootdir = '/home/umeshlives' 
 
 print ("Attempting to upload...")
