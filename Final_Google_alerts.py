@@ -58,18 +58,20 @@ app_key = 'ez341m6npdgliwh'
 access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(access_token)
+rootdir = 'News_Alerts' 
 
-def upload_file(file_from, file_to):
-##upload a file to Dropbox using API v2
-         with open(file_from, 'r') as f:
-                 dbx.files_upload(f.read(), file_to, mute=True)
-         
-print("The copiedName:",NameofFile)
-print(os.getcwd())
+print ("Attempting to upload...")
+# walk return first the current folder that it walk, then tuples of dirs and files not "subdir, dirs, files"
+for dir, dirs, files in os.walk(rootdir):
+    for file in files:
+        try:
+            #file_path = os.path.join(dir, file)
+            file_path = os.path.join(dir, file)
+            dest_path = os.path.join('/GoogleAlerts', file)
+            print 'Uploading %s to %s' % (file_path, dest_path)
+            with open(file_path,'r') as f:
+                dbx.files_upload(f.read(), dest_path, mute=True)
+        except Exception as err:
+            print("Failed to upload %s\n%s" % (file, err))
 
-file_from=path
-file_to=os.path.join('/GoogleAlerts',NameofFile)
-
-upload_file(file_from, file_to)
-print(dbx.files_get_metadata( file_to).server_modified)
-
+print("Finished upload.")
