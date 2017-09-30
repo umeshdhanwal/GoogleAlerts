@@ -47,7 +47,7 @@ file.close
 app_key = 'ez341m6npdgliwh'
 access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
-dbx = dropbox.Dropbox(app_secret)
+dbx = dropbox.Dropbox(access_token)
 
 class TransferData:
     def __init__(self, access_token):
