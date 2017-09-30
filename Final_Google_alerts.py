@@ -34,11 +34,12 @@ for e in d.entries:
 file.close
 
 #Drop box keys     
-file = open("testfile.txt","rb")
 app_key = 'ez341m6npdgliwh'
 app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(app_secret)
 
-dbx.files_upload(file, '/story.txt')
+with open('testfile.txt') as f:
+    dbx.files_upload(f, dest_path, mute=True)
+
 print(dbx.files_get_metadata('/story.txt').server_modified)
