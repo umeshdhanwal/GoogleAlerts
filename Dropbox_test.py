@@ -1,7 +1,7 @@
 import dropbox, sys, os
 
 dbx = dropbox.Dropbox('aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4')
-rootdir = '/home/umeshlives/GoogleAlerts' 
+rootdir = '/home/umeshlives/GoogleAlerts/Google_Alerts_2017-09-30:07:48.txt' 
 
 print ("Attempting to upload...")
 # walk return first the current folder that it walk, then tuples of dirs and files not "subdir, dirs, files"
