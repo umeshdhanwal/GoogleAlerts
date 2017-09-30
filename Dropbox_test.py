@@ -12,7 +12,7 @@ for dir, dirs, files in os.walk(rootdir):
             dest_path = os.path.join('/test', file)
             print 'Uploading %s to %s' % (file_path, dest_path)
             with open(file_path,'r') as f:
-                dbx.files_upload(f, dest_path, mute=True)
+                dbx.files_upload(f.read(), dest_path, mute=True)
         except Exception as err:
             print("Failed to upload %s\n%s" % (file, err))
 
