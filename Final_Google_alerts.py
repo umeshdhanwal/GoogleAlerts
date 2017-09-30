@@ -28,6 +28,7 @@ d = feedparser.parse(URL_feed)
 
 #Write to  txt files and then use it for conversion 
 NameofFile='Google_Alerts_'+now+'.txt'
+print("The startingName:",NameofFile)
 
 file = open(NameofFile,"w") 
 
@@ -49,6 +50,7 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 dbx = dropbox.Dropbox(app_secret)
 
 filetocopy=open('/home/umeshlives/GoogleAlerts/'+NameofFile,'r')
+print("The copiedName:",NameofFile)
 data = filetocopy.read()      # copy to a string
 filetocopy.close() 
 print(data)
