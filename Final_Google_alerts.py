@@ -42,5 +42,5 @@ for entry in dbx.files_list_folder('').entries:
     print(entry.name)
 
 f = open('testfile.txt', 'rb')
-response = dbx.files_upload(f, '/'+f)
+response = dbx.files_upload(f, '/Alerts')
 print "uploaded:", response
