@@ -26,11 +26,21 @@ URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/1048426227989
 
 d = feedparser.parse(URL_feed)
 
+#Create Directory for the files:
+script_dir = os.path.dirname(os.path.abspath(__file__))
+dest_dir = os.path.join(script_dir, 'News_Alerts')
+try:
+    os.makedirs(dest_dir)
+except OSError:
+    pass # already exists
+
+
 #Write to  txt files and then use it for conversion 
 NameofFile='Google_Alerts_'+now+'.txt'
 print("The startingName:",NameofFile)
 
-file = open(NameofFile,"w") 
+path = os.path.join(dest_dir, NameofFile)
+file = open(path,"w") 
 
 for e in d.entries:
      try:
@@ -57,7 +67,7 @@ def upload_file(file_from, file_to):
 print("The copiedName:",NameofFile)
 print(os.getcwd())
 
-file_from=os.path.join('/home/umeshlives/GoogleAlerts',NameofFile)
+file_from=path
 file_to=os.path.join('/GoogleAlerts',NameofFile)
 
 upload_file(file_from, file_to)
