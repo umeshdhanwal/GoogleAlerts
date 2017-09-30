@@ -15,7 +15,7 @@ import unicodedata
 import datetime
 
 now = datetime.datetime.now()
-now=now.strftime("%Y-%m-%d %H:%M")
+now=now.strftime("%Y-%m-%d:%H:%M")
 
 ##Pull the latest file from git
 print subprocess.check_output('git stash', shell=True)
