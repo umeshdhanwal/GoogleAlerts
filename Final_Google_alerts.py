@@ -13,6 +13,7 @@ import subprocess
 import dropbox
 
 ##Pull the latest file from git
+print subprocess.check_output('git stash', shell=True)
 print subprocess.check_output('git pull origin master', shell=True)
 
 repo_dir = 'GoogleAlerts'
@@ -30,7 +31,10 @@ for e in d.entries:
      #file.write(str(e.description))
      file.write("\n") # 2 newlines
 
+file.close
+
 #Drop box keys     
+file = open("testfile.txt","rb")
 app_key = 'ez341m6npdgliwh'
 app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
@@ -38,7 +42,3 @@ dbx = dropbox.Dropbox(app_secret)
 
 dbx.files_upload(file, '/story.txt')
 print(dbx.files_get_metadata('/story.txt').server_modified)
-     
-file.close
-
-
