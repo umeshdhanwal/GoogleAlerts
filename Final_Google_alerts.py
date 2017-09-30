@@ -29,6 +29,9 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 flow = dropbox.client.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 
+client = dropbox.client.DropboxClient(access_token)
+print 'linked account: ', client.account_info()
+
 f = open('testfile.txt', 'rb')
 response = client.put_file('/magnum-opus.txt', f)
 print "uploaded:", response
