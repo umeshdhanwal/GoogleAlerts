@@ -27,9 +27,9 @@ URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/1048426227989
 d = feedparser.parse(URL_feed)
 
 #Write to  txt files and then use it for conversion 
-NameofFile='Google_Alerts"+now
+NameofFile='Google_Alerts"+now+'.txt'
 
-file = open("testfile.txt","w") 
+file = open(NameofFile,"w") 
 
 for e in d.entries:
      try:
@@ -48,7 +48,7 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(app_secret)
 
-with open('testfile.txt') as f:
-    dbx.files_upload(f.read(), '/story.txt', mute=True)
+with open(NameofFile) as f:
+    dbx.files_upload(f.read(), '/'+NameofFile', mute=True)
 
 print(dbx.files_get_metadata('/story.txt').server_modified)
