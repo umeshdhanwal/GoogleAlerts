@@ -11,6 +11,7 @@ import feedparser
 import os
 import subprocess
 import dropbox
+import unicodedata
 
 ##Pull the latest file from git
 print subprocess.check_output('git stash', shell=True)
@@ -27,9 +28,9 @@ file = open("testfile.txt","w")
 
 for e in d.entries:
      try:
-       file.write(e.title+"\n")
-       file.write(e.link+"\n")
-       #file.write(str(e.description))
+       file.write(unicodedata.normalize('NFKD',e.title).encode('ascii','ignore')+"\n")
+       file.write(unicodedata.normalize('NFKD',e.link).encode('ascii','ignore')+"\n")
+       file.write(unicodedata.normalize('NFKD',e.description).encode('ascii','ignore')+"\n")
        file.write("\n") # 2 newlines
      except:
        pass
