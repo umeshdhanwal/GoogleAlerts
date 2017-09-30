@@ -49,7 +49,7 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 dbx = dropbox.Dropbox(app_secret)
 
 with open(NameofFile,'rb') as f:
-     print(readlines(f))
+     print(f.read())
      dbx.files_upload(f.read(), '/'+NameofFile, mute=True)
 
 print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
