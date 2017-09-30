@@ -51,7 +51,7 @@ dbx = dropbox.Dropbox(app_secret)
 
 print(os.getcwd())
 
-filetocopy=open('/home/umeshlives/GoogleAlerts/'+NameofFile,'r')
+filetocopy=open(NameofFile,'r')
 print("The copiedName:",NameofFile)
 data = filetocopy.read()      # copy to a string
 print(data)
