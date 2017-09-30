@@ -37,12 +37,14 @@ except OSError:
     pass # already exists
 
 
-#Write to  txt files and then use it for conversion 
+#Write to  txt files and then use it for conversion
 NameofFile='Google_Alerts_'+now+'.txt'
 print("The startingName:",NameofFile)
 
+os.chdir('/home/umeshlives/GoogleAlerts')
+
 path = os.path.join(dest_dir, NameofFile)
-file = open(path,"w") 
+file = open(path,"w")
 
 for e in d.entries:
      try:
@@ -55,12 +57,12 @@ for e in d.entries:
 
 file.close
 
-#Drop box keys     
+#Drop box keys
 app_key = 'ez341m6npdgliwh'
 access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(access_token)
-rootdir = 'News_Alerts' 
+rootdir = 'News_Alerts'
 
 print ("Attempting to upload...")
 # walk return first the current folder that it walk, then tuples of dirs and files not "subdir, dirs, files"
@@ -70,7 +72,7 @@ for dir, dirs, files in os.walk(rootdir):
             #file_path = os.path.join(dir, file)
             file_path = os.path.join(dir, file)
             dest_path = os.path.join('/GoogleAlerts', file)
-            print 'Uploading %s to %s' % (file_path, dest_path)
+            print('Uploading %s to %s' % (file_path, dest_path))
             with open(file_path,'r') as f:
                 dbx.files_upload(f.read(), dest_path, mute=True)
         except Exception as err:
