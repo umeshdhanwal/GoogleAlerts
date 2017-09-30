@@ -37,5 +37,5 @@ app_secret = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(app_secret)
 
-dbx.files_upload("Potential headline: Game 5 a nail-biter as Warriors inch out Cavs", '/story.txt')
+dbx.files_upload(file, '/story.txt')
 print(dbx.files_get_metadata('/story.txt').server_modified)
