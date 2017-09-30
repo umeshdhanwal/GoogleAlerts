@@ -26,10 +26,13 @@ d = feedparser.parse(URL_feed)
 file = open("testfile.txt","w") 
 
 for e in d.entries:
-     file.write(e.title+"\n")
-     file.write(e.link+"\n")
-     #file.write(str(e.description))
-     file.write("\n") # 2 newlines
+     try:
+       file.write(e.title+"\n")
+       file.write(e.link+"\n")
+       #file.write(str(e.description))
+       file.write("\n") # 2 newlines
+     except:
+       pass
 
 file.close
 
