@@ -49,23 +49,18 @@ access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4
 
 dbx = dropbox.Dropbox(access_token)
 
-class TransferData:
-    def __init__(self, access_token):
-        self.access_token = access_token
-
-    def upload_file(self, file_from, file_to):
-        """upload a file to Dropbox using API v2
-        """
+def upload_file(self, file_from, file_to):
+"""upload a file to Dropbox using API v2
+ """
         dbx = dropbox.Dropbox(self.access_token)
-
-        with open(file_from, 'rb') as f:
-            dbx.files_upload(f.read(), file_to)
+             with open(file_from, 'rb') as f:
+                 dbx.files_upload(f.read(), file_to)
          
 print("The copiedName:",NameofFile)
 
 file_from=NameofFile
 file_to='/'+NameofFile
 
-TransferData.upload_file(file_from, file_to)
+upload_file(file_from, file_to)
 print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
 filetocopy.close()
