@@ -66,6 +66,6 @@ print("The copiedName:",NameofFile)
 file_from=NameofFile
 file_to='/'+NameofFile
 
-transferData.upload_file(file_from, file_to)
+TransferData.upload_file(file_from, file_to)
 print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
 filetocopy.close()
