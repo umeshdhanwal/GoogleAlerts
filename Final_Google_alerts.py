@@ -18,6 +18,8 @@ now = datetime.datetime.now()
 now=now.strftime("%Y-%m-%d:%H:%M")
 
 ##Pull the latest file from git
+subprocess.check_output('git reset --hard', shell=True)
+subprocess.check_output('git clean -df', shell=True)
 subprocess.check_output('git stash', shell=True)
 subprocess.check_output('git pull origin master', shell=True)
 
