@@ -1,7 +1,7 @@
 import feedparser
 #import git
 import os
-#import subprocess
+import subprocess
 import dropbox
 
 ##Pull the latest file from git
