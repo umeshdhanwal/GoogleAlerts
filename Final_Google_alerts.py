@@ -57,8 +57,8 @@ def upload_file(file_from, file_to):
 print("The copiedName:",NameofFile)
 print(os.getcwd())
 
-file_from=NameofFile
-file_to='/GoogleAlerts/'+NameofFile
+file_from=os.path.join('/home/umeshlives/GoogleAlerts',NameofFile)
+file_to=os.path.join('/GoogleAlerts',NameofFile)
 
 upload_file(file_from, file_to)
 print(dbx.files_get_metadata( file_to).server_modified)
