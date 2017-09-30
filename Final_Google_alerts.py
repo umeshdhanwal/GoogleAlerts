@@ -51,6 +51,7 @@ dbx = dropbox.Dropbox(app_secret)
 filetocopy=open(NameofFile,'rb')
 data = filetocopy.read()      # copy to a string
 filetocopy.close() 
+print(data)
 
 dbx.files_upload(data, '/'+NameofFile, mute=True)
 print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
