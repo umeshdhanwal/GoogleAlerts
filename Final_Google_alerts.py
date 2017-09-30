@@ -27,7 +27,7 @@ URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/1048426227989
 d = feedparser.parse(URL_feed)
 
 #Write to  txt files and then use it for conversion 
-NameofFile='Google_Alerts_"+now+'.txt'
+NameofFile='Google_Alerts_'+now+'.txt'
 
 file = open(NameofFile,"w") 
 
