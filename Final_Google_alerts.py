@@ -49,11 +49,9 @@ access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4
 
 dbx = dropbox.Dropbox(access_token)
 
-def upload_file(self, file_from, file_to):
+def upload_file(file_from, file_to):
 ##upload a file to Dropbox using API v2
- 
-        dbx = dropbox.Dropbox(self.access_token)
-        with open(file_from, 'rb') as f:
+         with open(file_from, 'rb') as f:
                  dbx.files_upload(f.read(), file_to)
          
 print("The copiedName:",NameofFile)
