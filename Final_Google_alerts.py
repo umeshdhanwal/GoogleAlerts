@@ -62,4 +62,4 @@ file_to='/'+NameofFile
 
 upload_file(file_from, file_to)
 print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
-filetocopy.close()
+
