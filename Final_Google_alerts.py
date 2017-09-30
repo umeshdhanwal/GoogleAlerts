@@ -56,6 +56,6 @@ print("The copiedName:",NameofFile)
 data = filetocopy.read()      # copy to a string
 print(data)
 
-dbx.files_upload(data, '/'+NameofFile, mute=True)
+dbx.files_upload('This is the one I was talking', '/'+NameofFile, mute=True)
 print(dbx.files_get_metadata( '/'+NameofFile).server_modified)
 filetocopy.close()
