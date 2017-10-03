@@ -24,7 +24,13 @@ now=now.strftime("%Y-%m-%d:%H:%M")
 #subprocess.check_output('git pull origin master', shell=True)
 
 repo_dir = 'GoogleAlerts'
-URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/10484262279899711572'
+#URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/10484262279899711572'
+URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/17777381263490192727'
+#URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/861461405236497894'
+#URL_feed='https://www.google.com/alerts/feeds/06782147434896058293/8909055318872650373'
+
+if 'google' in URL_feed:
+    URL_feed=URL_feed.replace('google.ie', 'google.com')
 
 d = feedparser.parse(URL_feed)
 
@@ -59,6 +65,7 @@ file.close
 
 #Drop box keys
 app_key = 'ez341m6npdgliwh'
+#access_token = 'o2HubcOnjaAAAAAAAACGENE_EX_fTQ2h4dErQe0yjEO6jfRgtSiLjfFi-SvmZ67N'
 access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4'
 
 dbx = dropbox.Dropbox(access_token)
