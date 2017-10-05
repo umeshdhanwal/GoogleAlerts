@@ -15,10 +15,23 @@ import unicodedata
 import datetime
 from weasyprint import HTML, CSS
 
+os.chdir('/home/umeshdhanwal/GoogleAlerts')
 
 #Defining the time of txt file
 now = datetime.datetime.now().strftime("%Y-%m-%d:%H:%M")
 
+#Create Directory for the files:
+def createdir(value):
+   script_dir = os.path.dirname(os.path.abspath(__file__))
+   dest_dir = os.path.join(script_dir, value)
+   try:
+      os.makedirs(dest_dir)
+   except OSError:
+      pass # already exists
+   return dest_dir
+
+dest_dir=createdir('News_Alerts')
+dest_dir_pdf=createdir('News_Alerts_pdf')
 
 ##Pull the latest file from git
 #subprocess.check_output('git reset --hard', shell=True)
@@ -38,37 +51,26 @@ if 'google' in URL_feed:
 d = feedparser.parse(URL_feed)
 
 #Trying to convert to pdf
-url='https://www.irishtimes.com/news/politics/liam-cosgrave-former-taoiseach-and-fine-gael-leader-dies-aged-97-1.3244509'
+url='https://stackoverflow.com/questions/30292625/weasyprint-html-to-pdf-huge-gap-in-right-margin'
 
 if "irishtimes" in url:
-   pdf = HTML(url).write_pdf('google.pdf',stylesheets=[CSS(string='@page { size: 26.9cm 300cm; margin: 0in 0in 0in 0in};'
-           '@media print { nav { display: none; } }')])
+        pdf = HTML(url).write_pdf(stylesheets=[CSS(string='@page { size: 26.9cm 300cm; margin: 0in 0in 0in 0in};'
+             '@media print { nav { display: none; } }')])
+        f=open(os.path.join(dest_dir_pdf,"google.pdf"),"w")
+        f.write(pdf)
 else:
-    pdf=HTML(url).write_pdf('google.pdf')
+        pdf=HTML(url).write_pdf()
+        f=open(os.path.join(dest_dir_pdf,"nogoogle.pdf"),"w")
+        f.write(pdf)
 
 
 #pdf = HTML(url).write_pdf('google.pdf',stylesheets=[CSS(string='@page {size: 27cm 300cm;margin: 0in 0.44in 0.2in 0.44in;}')])
 #open('google.pdf', 'w').write(pdf)
 #print(url.text)
 
-
-#Create Directory for the files:
-def createdir(value):
-   script_dir = os.path.dirname(os.path.abspath(__file__))
-   dest_dir = os.path.join(script_dir, value)
-   try:
-      os.makedirs(dest_dir)
-   except OSError:
-      pass # already exists
-   return dest_dir
-
-dest_dir=createdir('News_Alerts')
-
 #Write to  txt files and then use it for conversion
 NameofFile='Google_Alerts_'+now+'.txt'
 print("The startingName:",NameofFile)
-
-os.chdir('/home/umeshdhanwal/GoogleAlerts')
 
 path = os.path.join(dest_dir, NameofFile)
 file = open(path,"w")
@@ -90,6 +92,7 @@ access_token = 'aYGqbBWFEzoAAAAAAAAADibvdDcTby6Pjgc8Bl4nZc4PASuecEG9isKWkWcd44o4
 
 dbx = dropbox.Dropbox(access_token)
 rootdir = 'News_Alerts'
+root_pdfdir='News_Alerts_pdf'
 
 print ("Attempting to upload...")
 # walk return first the current folder that it walk, then tuples of dirs and files not "subdir, dirs, files"
@@ -102,10 +105,12 @@ def uploadfile(rootdir):
              dest_path = os.path.join('/GoogleAlerts',rootdir,file)
              print('Uploading %s to %s' % (file_path, dest_path))
              with open(file_path,'r') as f:
-                dbx.files_upload(f.read(), dest_path, mute=True)
+                dbx.files_upload(f.read(), dest_path, mode=dropbox.files.WriteMode.overwrite)
           except Exception as err:
              print("Failed to upload %s\n%s" % (file, err))
 
 #Uploading the files
 uploadfile(rootdir)
+uploadfile(root_pdfdir)
+
 print("Finished upload.")
