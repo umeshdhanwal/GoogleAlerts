@@ -4,6 +4,10 @@ Created on Sat Sep 30 09:05:15 2017
 
 @author: Hsemu
 """
+import warnings
+
+#Muting the warnings
+warnings.filterwarnings("ignore")
 
 #from git import Repo
 import feedparser
@@ -16,7 +20,6 @@ import datetime
 from weasyprint import HTML, CSS
 import re
 import requests, lxml.html
-import warnings
 
 
 os.chdir('/home/umeshdhanwal/GoogleAlerts')
@@ -58,8 +61,7 @@ def createdir(value):
 dest_dir=createdir('News_Alerts')
 dest_dir_pdf=createdir('News_Alerts_pdf')
 
-#Muting the warnings
-warnings.filterwarnings("ignore")
+
 
 #Write to  txt files and then use it for conversion
 NameofFile='Google_Alerts_'+now+'.txt'
@@ -71,9 +73,9 @@ file = open(path,"w")
 repo_dir = 'GoogleAlerts'
 #URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/10484262279899711572'
 #URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/17777381263490192727'
-URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/861461405236497894'
+#URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/861461405236497894'
 #URL_feed='https://www.google.com/alerts/feeds/06782147434896058293/8909055318872650373'
-#irishtime URL_feed='https://www.google.com/alerts/feeds/14273445301609542014/8457109545342134256'
+URL_feed='https://www.google.com/alerts/feeds/14273445301609542014/8457109545342134256'
 
 if 'google' in URL_feed:
     URL_feed=URL_feed.replace('google.ie', 'google.com')
