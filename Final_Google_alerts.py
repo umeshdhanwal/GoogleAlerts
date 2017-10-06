@@ -7,7 +7,7 @@ Refer to the Fourth line of the alert for identifying the location of the saved 
 
 Created on Fri Oct 30 09:05:15 2017
 
-@author: Hsemu
+@author: Umesh Kumar email: umeshdhanwal@gmail.com
 """
 
 #Muting the warnings
@@ -26,10 +26,10 @@ import requests, lxml.html
 
 '''Please put the URL feed of the Google alerts which you want to feed'''
 #URL_feed='https://www.google.com/alerts/feeds/03052694921060148104/10484262279899711572' #Alert for Donald Trump
-URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/17777381263490192727' #Alert for Ryan Air
+#URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/17777381263490192727' #Alert for Ryan Air
 #URL_feed='https://www.google.ie/alerts/feeds/06782147434896058293/861461405236497894'  #Alert for Las Vegas
 #URL_feed='https://www.google.com/alerts/feeds/06782147434896058293/8909055318872650373' #Alert for Trump
-#URL_feed='https://www.google.com/alerts/feeds/14273445301609542014/8457109545342134256' #Alert for Itishtimes opinion of Newton Emerson
+URL_feed='https://www.google.com/alerts/feeds/06782147434896058293/8909055318872650373','https://www.google.ie/alerts/feeds/06782147434896058293/861461405236497894'
 
 '''Please provide the username and password for Irishtimes'''
 user='a.m.connolly@idiro.com'
@@ -88,33 +88,34 @@ print("The Name of alert file created just now:",NameofFile)
 path = os.path.join(dest_dir, NameofFile)
 file = open(path,"w")
 
-if 'google' in URL_feed:
-    URL_feed=URL_feed.replace('google.ie', 'google.com')
-
-d = feedparser.parse(URL_feed)
+#Converting to googl.com as its not recognised while parsing for google.ie
+URL_feed = [w.replace('google.ie', 'google.com') for w in URL_feed]
 
 #Defining the blank url for extracting urls
 url=[]
 
-#Text to remove from the extracted links
-reps = {'<b>':'', '</b>':'','&nbsp;':''}
+for feed in URL_feed:
+    d = feedparser.parse(feed)
 
-print ("Extracting the %s feeds............."%len(d.entries))
+    #Text to remove from the extracted links
+    reps = {'<b>':'', '</b>':'','&nbsp;':''}
 
-for i,e in enumerate(d.entries):
-     try:
-       file.write(replace_all(unicodedata.normalize('NFKD',e.title).encode('ascii','ignore'),reps)+"\n")
-       file.write(unicodedata.normalize('NFKD',e.link).encode('ascii','ignore')+"\n")
-       if "irishtimes" in unicodedata.normalize('NFKD',e.link).encode('ascii','ignore'):
-           pdffilename=str(os.path.join(dest_dir_pdf,"%s_%s_irishtimes.pdf"%(now,i)))
-       else:
-           pdffilename=str(os.path.join(dest_dir_pdf,"%s_%s.pdf"%(now,i)))
-       url.extend(re.findall('url="?\'?([^"\'&]*)',unicodedata.normalize('NFKD',e.link).encode('ascii','ignore') ))
-       file.write(replace_all(unicodedata.normalize('NFKD',e.description).encode('ascii','ignore'),reps)+"\n")
-       file.write("Location of file in PythonAnywhere:%s"%pdffilename+"\n")
-       file.write("\n") # 2 newlines
-     except:
-         pass
+    print ("Extracting the %s feeds............."%len(d.entries))
+
+    for i,e in enumerate(d.entries):
+         try:
+           file.write(replace_all(unicodedata.normalize('NFKD',e.title).encode('ascii','ignore'),reps)+"\n")
+           file.write(unicodedata.normalize('NFKD',e.link).encode('ascii','ignore')+"\n")
+           if "irishtimes" in unicodedata.normalize('NFKD',e.link).encode('ascii','ignore'):
+               pdffilename=str(os.path.join(dest_dir_pdf,"%s_%s_irishtimes.pdf"%(now,i)))
+           else:
+               pdffilename=str(os.path.join(dest_dir_pdf,"%s_%s.pdf"%(now,i)))
+           url.extend(re.findall('url="?\'?([^"\'&]*)',unicodedata.normalize('NFKD',e.link).encode('ascii','ignore') ))
+           file.write(replace_all(unicodedata.normalize('NFKD',e.description).encode('ascii','ignore'),reps)+"\n")
+           file.write("Location of file in PythonAnywhere:%s"%pdffilename+"\n")
+           file.write("\n") # 2 newlines
+         except:
+             pass
 
 file.close
 file.flush()
