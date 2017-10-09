@@ -9,4 +9,8 @@ make
 make install
 
 - After the above installation set LD environment in bashrc:
+source ~/.bashrc
+vim ~/.bashrc
 
+Add the below line at the end: 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
