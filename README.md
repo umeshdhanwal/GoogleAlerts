@@ -22,7 +22,7 @@ for e.g. for website thephoenix.ie the below pattern can be used which will extr
 - Global Search Pattern:
 {%}
 
-- Item REpeatbale search Pattern:
+- Item Repeatbale search Pattern:
 <h6 class="issuem-featured-thumb-title headline">{*}
 <a href="{%}"{*}
 </h6>
