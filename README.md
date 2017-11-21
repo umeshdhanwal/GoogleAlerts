@@ -14,3 +14,17 @@ vim ~/.bashrc
 
 Add the below line at the end: 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
+
+The Google alerts for specific websites can be created by using Feed43:
+
+for e.g. for website thephoenix.ie the below pattern can be used which will extract all the links: 
+
+- Global Search Pattern:
+{%}
+
+- Item REpeatbale search Pattern:
+<h6 class="issuem-featured-thumb-title headline">{*}
+<a href="{%}"{*}
+</h6>
+
+
